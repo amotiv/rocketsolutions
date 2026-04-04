@@ -10,18 +10,13 @@ export async function login(formData: FormData) {
   const email = formData.get('email') as string
   const password = formData.get('password') as string
 
-  // Note: For actual MVP testing, you can provision users directly in Supabase Dashboard
-  const { error } = await supabase.auth.signInWithPassword({
-    email,
-    password,
-  })
-
-  if (error) {
-    redirect('/login?message=Could not authenticate user')
+  // Mock checking credentials for local development
+  if (email === 'admin@rocketsolutions.com' && password === 'password123') {
+    revalidatePath('/', 'layout')
+    redirect('/app/properties/1')
   }
 
-  revalidatePath('/', 'layout')
-  redirect('/app/properties/1')
+  redirect('/login?message=Invalid credentials (use admin@rocketsolutions.com / password123)')
 }
 
 export async function signup(formData: FormData) {
