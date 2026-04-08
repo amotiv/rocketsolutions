@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import { 
   Building2, CheckCircle2, AlertCircle, Clock, CheckSquare, 
   MapPin, Activity, ArrowUpRight, Ban, TrendingUp 
@@ -10,19 +13,27 @@ const MOCK_ZONES = [
   { id: 'z4', name: 'Package Rm & Mail', score: 12, status: 'GREEN', label: 'No Action', lastCleaned: '', activity: '', assignedTo: '', action: '', result: 'Saved 20m of labor', skipped: true }
 ];
 
-const MOCK_PROPERTY_TASKS = [
+const INITIAL_MOCK_PROPERTY_TASKS = [
   { id: 't1', title: 'Clubhouse Glass Wipe', priority: 'Overdue', assignee: 'Unassigned', status: 'Open' },
   { id: 't2', title: 'Lobby Entry Mats', priority: 'Active', assignee: 'Carlos M.', status: 'In Progress' },
   { id: 't3', title: 'Gym Restrooms (B)', priority: 'Completed', assignee: '', status: 'Completed', verifiedAt: '9:15 AM' }
 ];
 
-export default async function PropertyCommandCenter({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}) {
-  // Demo Mode: Bypassing Supabase fetch to ensure visual prototype is always filled
-  const hasRealData = true;
+export default function PropertyCommandCenter() {
+  const [tasks, setTasks] = useState(INITIAL_MOCK_PROPERTY_TASKS);
+  
+  const handleAssign = (id: string) => {
+    setTasks(prev => prev.map(t => 
+      t.id === id ? { ...t, priority: 'Active', assignee: 'Alex R.', status: 'In Progress' } : t
+    ));
+  };
+  
+  const handleComplete = (id: string) => {
+    setTasks(prev => prev.map(t => 
+      t.id === id ? { ...t, priority: 'Completed', status: 'Completed', verifiedAt: 'Just now' } : t
+    ));
+  };
+
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       
@@ -172,22 +183,22 @@ export default async function PropertyCommandCenter({
               </div>
               
               <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                  {MOCK_PROPERTY_TASKS.map(task => (
-                    <div key={task.id}>
+                  {tasks.map(task => (
+                    <div key={task.id} className="animate-in slide-in-from-right-4 fade-in duration-300">
                       {task.priority === 'Overdue' && (
                         <div className="p-3 bg-red-50 border border-red-100 rounded-xl relative">
                            <div className="absolute top-3 right-3 text-red-500 text-xs font-bold flex items-center gap-1"><Clock className="w-3 h-3"/> Overdue</div>
                            <h4 className="font-bold text-navy text-sm mb-1 pr-16 leading-tight">{task.title}</h4>
                            <p className="text-xs text-slate-500 mb-2">Assignee: {task.assignee}</p>
-                           <button className="w-full text-xs font-bold py-1.5 bg-white border border-slate-200 rounded shadow-sm text-navy hover:bg-slate-50">Assign Task</button>
+                           <button onClick={() => handleAssign(task.id)} className="w-full text-xs font-bold py-1.5 bg-white border border-slate-200 rounded shadow-sm text-navy hover:bg-slate-50 transition-all">Assign Task</button>
                         </div>
                       )}
                       
                       {task.priority === 'Active' && (
-                        <div className="p-3 border border-slate-200 rounded-xl bg-white shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
+                        <div onClick={() => handleComplete(task.id)} className="p-3 border border-slate-200 rounded-xl bg-white shadow-sm hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group" title="Click to verify and complete">
                            <div className="flex justify-between items-start mb-1">
-                              <h4 className="font-bold text-navy text-sm">{task.title}</h4>
-                              <span className="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">In Prog</span>
+                              <h4 className="font-bold text-navy text-sm group-hover:text-primary transition-colors">{task.title}</h4>
+                              <span className="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded group-hover:bg-primary group-hover:text-white transition-colors">In Prog</span>
                            </div>
                            <p className="text-xs text-slate-500 mb-2">Assignee: {task.assignee}</p>
                            <div className="w-full bg-slate-100 rounded-full h-1.5"><div className="bg-primary h-1.5 rounded-full w-1/2"></div></div>

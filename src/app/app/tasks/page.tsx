@@ -1,8 +1,11 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { 
   CheckSquare, Filter, Clock, AlertCircle, ChevronDown, CheckCircle2 
 } from 'lucide-react';
 
-const MOCK_GLOBAL_TASKS = [
+const INITIAL_MOCK_TASKS = [
   {
     id: 't1',
     property: 'Lumina Apartments',
@@ -42,8 +45,43 @@ const MOCK_GLOBAL_TASKS = [
 ];
 
 export default function TaskManagementPage() {
+  const [tasks, setTasks] = useState(INITIAL_MOCK_TASKS);
+  const [completedCount, setCompletedCount] = useState(45);
+
+  useEffect(() => {
+    // Simulator Engine: Fire a fake event after 8 seconds
+    const timer = setTimeout(() => {
+      setTasks(prev => [{
+        id: 'new-urgent-' + Date.now(),
+        property: 'Oak Park Towers',
+        zone: 'Lobby Entry Mats',
+        title: 'Spill Detected: Priority Red',
+        description: 'Auto-detected by lobby vision system.',
+        priority: 'Urgent',
+        due: 'Just now',
+        assignee: 'Unassigned',
+        vendor: '',
+        status: 'Open'
+      }, ...prev]);
+    }, 8000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleAssign = (id: string) => {
+    setTasks(prev => prev.map(t => 
+      t.id === id 
+        ? { ...t, assignee: 'Alex R.', vendor: 'ProClean Partners', status: 'In Progress' }
+        : t
+    ));
+  };
+
+  const handleComplete = (id: string) => {
+    setTasks(prev => prev.filter(t => t.id !== id));
+    setCompletedCount(c => c + 1);
+  };
+
   return (
-    <div className="space-y-6 animate-in fade-in duration-500 max-w-7xl mx-auto">
+    <div className="space-y-6 animate-in fade-in duration-500 max-w-7xl mx-auto pb-12">
       
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-2">
@@ -54,28 +92,28 @@ export default function TaskManagementPage() {
             </h1>
             <p className="text-slate-500 mt-1">Portfolio-wide dispatch tracking and SLA monitoring.</p>
          </div>
-         <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50">
+         <button className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 shadow-sm hover:bg-slate-50 transition-colors">
            <Filter className="w-4 h-4"/> Filters
          </button>
       </div>
 
       {/* KPI Ribbon */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm transition-all">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Open Dispatch</span>
-            <div className="text-2xl font-bold text-navy mt-1">12</div>
+            <div className="text-2xl font-bold text-navy mt-1">{tasks.filter(t => t.status === 'Open').length + 10}</div>
          </div>
-         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm transition-all">
             <span className="text-xs font-bold text-orange-500 uppercase tracking-widest">In Progress</span>
-            <div className="text-2xl font-bold text-orange-600 mt-1">4</div>
+            <div className="text-2xl font-bold text-orange-600 mt-1">{tasks.filter(t => t.status === 'In Progress').length + 3}</div>
          </div>
-         <div className="bg-red-50 border border-red-100 rounded-xl p-4 shadow-sm">
+         <div className="bg-red-50 border border-red-100 rounded-xl p-4 shadow-sm transition-all">
             <span className="text-xs font-bold text-red-500 uppercase tracking-widest">Overdue SLA</span>
-            <div className="text-2xl font-bold text-red-600 mt-1">1</div>
+            <div className="text-2xl font-bold text-red-600 mt-1">{tasks.filter(t => t.priority === 'Overdue').length}</div>
          </div>
-         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+         <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm transition-all">
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Completed Today</span>
-            <div className="text-2xl font-bold text-green-600 mt-1">45</div>
+            <div className="text-2xl font-bold text-green-600 mt-1">{completedCount}</div>
          </div>
       </div>
 
@@ -91,8 +129,8 @@ export default function TaskManagementPage() {
          </div>
 
          <div className="divide-y divide-slate-100">
-            {MOCK_GLOBAL_TASKS.map((task) => (
-              <div key={task.id} className="grid md:grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-slate-50 transition-colors">
+            {tasks.map((task, idx) => (
+              <div key={task.id} className="grid md:grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-slate-50 transition-colors animate-in slide-in-from-top-2 fade-in duration-300">
                  <div className="md:col-span-3">
                     <div className="font-bold text-navy text-sm">{task.property}</div>
                     <div className="text-slate-500 text-xs text-balance">{task.zone}</div>
@@ -118,24 +156,28 @@ export default function TaskManagementPage() {
                       {task.assignee}
                     </div>
                     {task.assignee === 'Unassigned' ? (
-                       <button className="text-xs text-primary font-bold hover:underline">Assign Vendor</button>
+                       <button onClick={() => handleAssign(task.id)} className="text-xs text-primary font-bold hover:underline transition-all">Assign Vendor</button>
                     ) : (
                        <div className="text-xs text-slate-500">{task.vendor}</div>
                     )}
                  </div>
-                 <div className="md:col-span-2 text-right">
-                    <button className={`inline-flex items-center justify-between w-[120px] px-3 py-1.5 rounded text-sm font-medium ml-auto
-                      ${task.status === 'In Progress' ? 'bg-primary/10 border border-primary/20 text-primary font-bold' : 
+                 <div className="md:col-span-2 text-right flex justify-end">
+                    <button 
+                       onClick={() => { if (task.status === 'In Progress') handleComplete(task.id); }}
+                       title={task.status === 'In Progress' ? 'Click to mark as complete' : ''}
+                       className={`inline-flex items-center justify-between w-[125px] px-3 py-1.5 rounded text-sm font-medium transition-all
+                      ${task.status === 'In Progress' ? 'bg-primary/10 border border-primary/20 text-primary font-bold hover:bg-primary hover:text-white cursor-pointer' : 
                       'bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 shadow-sm'}
                     `}>
-                       {task.status} <ChevronDown className="w-4 h-4 text-slate-400"/>
+                       {task.status === 'In Progress' ? 'Complete Job' : task.status} 
+                       {task.status !== 'In Progress' && <ChevronDown className="w-4 h-4 text-slate-400"/>}
                     </button>
                  </div>
               </div>
             ))}
 
-            {MOCK_GLOBAL_TASKS.length === 0 && (
-               <div className="py-20 flex flex-col items-center justify-center text-center">
+            {tasks.length === 0 && (
+               <div className="py-20 flex flex-col items-center justify-center text-center animate-in fade-in duration-500">
                   <CheckCircle2 className="w-16 h-16 text-slate-300 mb-4" />
                   <h3 className="font-bold text-lg text-navy">Zero Open Tasks</h3>
                   <p className="text-slate-500 text-sm max-w-sm mt-1">All properties are fully serviced and no urgent thresholds have been triggered.</p>
