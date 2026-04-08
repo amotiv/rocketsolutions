@@ -9,14 +9,14 @@ export default function ReportsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-navy flex items-center gap-3">
+          <h1 className="text-3xl font-bold text-navy dark:text-white flex items-center gap-3">
             <BarChart3 className="w-8 h-8 text-primary" />
             Analytics & ROI
           </h1>
-          <p className="text-slate-500 mt-1">Lumina Apartments — Last 30 Days Dashboard</p>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">Lumina Apartments — Last 30 Days Dashboard</p>
         </div>
         <div className="flex gap-3">
-          <button className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2">
+          <button className="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900/50 transition-colors shadow-sm flex items-center gap-2">
             <FileText className="w-4 h-4" /> PDF Report
           </button>
           <button className="px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary-hover transition-colors shadow-sm flex items-center gap-2">
@@ -36,18 +36,18 @@ export default function ReportsPage() {
            </p>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden group">
-           <h3 className="text-slate-500 font-bold text-sm tracking-widest uppercase mb-2">High-Traffic Coverage</h3>
-           <div className="text-5xl font-bold text-navy mb-2">94%</div>
-           <p className="text-slate-500 text-sm flex items-center gap-1">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+           <h3 className="text-slate-500 dark:text-slate-400 font-bold text-sm tracking-widest uppercase mb-2">High-Traffic Coverage</h3>
+           <div className="text-5xl font-bold text-navy dark:text-white mb-2">94%</div>
+           <p className="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">
              <ArrowUpRight className="w-4 h-4 text-green-500" /> Peak events matched with service
            </p>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm relative overflow-hidden group">
-           <h3 className="text-slate-500 font-bold text-sm tracking-widest uppercase mb-2">Avg SLA Response Time</h3>
-           <div className="text-5xl font-bold text-navy mb-2">14m</div>
-           <p className="text-slate-500 text-sm flex items-center gap-1">
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden group">
+           <h3 className="text-slate-500 dark:text-slate-400 font-bold text-sm tracking-widest uppercase mb-2">Avg SLA Response Time</h3>
+           <div className="text-5xl font-bold text-navy dark:text-white mb-2">14m</div>
+           <p className="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">
              <ArrowDownRight className="w-4 h-4 text-green-500" /> 3m faster vs baseline
            </p>
         </div>
@@ -56,15 +56,15 @@ export default function ReportsPage() {
       {/* Operations Breakdown */}
       <div className="grid lg:grid-cols-2 gap-8">
          
-         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <h3 className="text-lg font-bold text-navy mb-6 border-b border-slate-100 pb-4 flex items-center gap-2">
+         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-6">
+            <h3 className="text-lg font-bold text-navy dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800/50 pb-4 flex items-center gap-2">
                <Activity className="w-5 h-5 text-primary" /> Zone Activity Heatmap (Weekly)
             </h3>
             <div className="space-y-6">
                <div>
                   <div className="flex justify-between text-sm mb-1">
-                     <span className="font-bold text-navy">Main Lobby</span>
-                     <span className="text-slate-500">Peak: 7AM-9AM</span>
+                     <span className="font-bold text-navy dark:text-white">Main Lobby</span>
+                     <span className="text-slate-500 dark:text-slate-400">Peak: 7AM-9AM</span>
                   </div>
                   <div className="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
                      <div className="bg-primary/20 w-1/4 h-full border-r border-white/50"></div>
@@ -75,8 +75,8 @@ export default function ReportsPage() {
                </div>
                <div>
                   <div className="flex justify-between text-sm mb-1">
-                     <span className="font-bold text-navy">Fitness Center</span>
-                     <span className="text-slate-500">Peak: 5AM-7AM, 5PM-8PM</span>
+                     <span className="font-bold text-navy dark:text-white">Fitness Center</span>
+                     <span className="text-slate-500 dark:text-slate-400">Peak: 5AM-7AM, 5PM-8PM</span>
                   </div>
                   <div className="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
                      <div className="bg-red-500 w-1/6 h-full border-r border-white/50"></div>
@@ -86,32 +86,32 @@ export default function ReportsPage() {
                </div>
                <div>
                   <div className="flex justify-between text-sm mb-1">
-                     <span className="font-bold text-navy">5th Fl Lounge</span>
-                     <span className="text-slate-500">Low Utilization</span>
+                     <span className="font-bold text-navy dark:text-white">5th Fl Lounge</span>
+                     <span className="text-slate-500 dark:text-slate-400">Low Utilization</span>
                   </div>
                   <div className="w-full bg-slate-100 rounded-full h-3 flex overflow-hidden">
                      <div className="bg-primary/10 w-full h-full"></div>
                   </div>
                </div>
                
-               <p className="text-xs text-slate-500 italic pt-4">Data derived from anonymous occupancy threshold sensors over 30 days.</p>
+               <p className="text-xs text-slate-500 dark:text-slate-400 italic pt-4">Data derived from anonymous occupancy threshold sensors over 30 days.</p>
             </div>
          </div>
 
-         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 flex flex-col">
-            <h3 className="text-lg font-bold text-navy mb-6 border-b border-slate-100 pb-4 flex items-center gap-2">
+         <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 flex flex-col">
+            <h3 className="text-lg font-bold text-navy dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800/50 pb-4 flex items-center gap-2">
                <Clock className="w-5 h-5 text-primary" /> Task Execution Quality
             </h3>
             <div className="flex-1 flex flex-col justify-center">
                
                <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 text-center">
-                     <span className="block text-2xl font-bold text-navy mb-1">214</span>
-                     <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Tasks Generated</span>
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800/50 text-center">
+                     <span className="block text-2xl font-bold text-navy dark:text-white mb-1">214</span>
+                     <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Tasks Generated</span>
                   </div>
-                  <div className="p-4 bg-slate-50 rounded-xl border border-slate-100 text-center">
+                  <div className="p-4 bg-slate-50 dark:bg-slate-900/50 rounded-xl border border-slate-100 dark:border-slate-800/50 text-center">
                      <span className="block text-2xl font-bold text-green-600 mb-1">210</span>
-                     <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Tasks Verified</span>
+                     <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">Tasks Verified</span>
                   </div>
                </div>
 

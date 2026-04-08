@@ -30,7 +30,7 @@ const KPIS = [
 
 export default function PilotProgramPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-surface">
+    <div className="flex flex-col min-h-screen bg-surface dark:bg-slate-900">
       {/* Hero */}
       <section className="bg-navy py-16 lg:py-24 text-center px-4">
         <div className="max-w-4xl mx-auto">
@@ -53,23 +53,23 @@ export default function PilotProgramPage() {
             {/* Details Side */}
             <div className="lg:col-span-7 space-y-16">
                <div>
-                  <h2 className="text-3xl font-bold text-navy mb-6">What's included in the Pilot?</h2>
+                  <h2 className="text-3xl font-bold text-navy dark:text-white mb-6">What's included in the Pilot?</h2>
                   <ul className="space-y-4">
                      {INCLUDED.map((item, i) => (
-                        <li key={i} className="flex gap-4 p-4 rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <li key={i} className="flex gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
                            <PackageOpen className="w-6 h-6 text-primary flex-shrink-0" />
-                           <span className="text-navy font-medium">{item}</span>
+                           <span className="text-navy dark:text-white font-medium">{item}</span>
                         </li>
                      ))}
                   </ul>
                </div>
 
                <div>
-                  <h2 className="text-3xl font-bold text-navy mb-6">Typical Pilot Zones</h2>
-                  <p className="text-slate-600 mb-6 font-medium">We focus on your highest-impact areas to prove value quickly.</p>
+                  <h2 className="text-3xl font-bold text-navy dark:text-white mb-6">Typical Pilot Zones</h2>
+                  <p className="text-slate-600 dark:text-slate-300 mb-6 font-medium">We focus on your highest-impact areas to prove value quickly.</p>
                   <div className="flex flex-wrap gap-3">
                      {ZONES.map((zone, i) => (
-                        <span key={i} className="px-4 py-2 bg-white border border-slate-300 shadow-sm rounded-lg text-navy font-semibold flex items-center gap-2">
+                        <span key={i} className="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 shadow-sm rounded-lg text-navy dark:text-white font-semibold flex items-center gap-2">
                            <MapPin className="w-4 h-4 text-primary" /> {zone}
                         </span>
                      ))}
@@ -77,14 +77,14 @@ export default function PilotProgramPage() {
                </div>
 
                <div>
-                  <h2 className="text-3xl font-bold text-navy mb-6">The KPIs We Track</h2>
+                  <h2 className="text-3xl font-bold text-navy dark:text-white mb-6">The KPIs We Track</h2>
                   <div className="space-y-4">
                      {KPIS.map((kpi, i) => (
-                        <div key={i} className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-                           <h4 className="text-lg font-bold text-navy flex items-center gap-2 mb-2">
+                        <div key={i} className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                           <h4 className="text-lg font-bold text-navy dark:text-white flex items-center gap-2 mb-2">
                               <Target className="w-5 h-5 text-primary" /> {kpi.name}
                            </h4>
-                           <p className="text-slate-600 pl-7">{kpi.desc}</p>
+                           <p className="text-slate-600 dark:text-slate-300 pl-7">{kpi.desc}</p>
                         </div>
                      ))}
                   </div>

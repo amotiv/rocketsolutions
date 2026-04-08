@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-surface">
+    <div className="flex flex-col min-h-screen bg-surface dark:bg-slate-900">
       
       <section className="bg-navy py-16 lg:py-24 text-center px-4">
         <div className="max-w-4xl mx-auto">
@@ -23,8 +23,8 @@ export default function ContactPage() {
       <section className="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 lg:-mt-20 relative z-10 w-full">
          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
             
-            <div className="lg:col-span-5 bg-white p-8 lg:p-12 rounded-3xl border border-slate-200 shadow-xl">
-               <h2 className="text-3xl font-bold text-navy mb-8">Get In Touch</h2>
+            <div className="lg:col-span-5 bg-white dark:bg-slate-900 p-8 lg:p-12 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
+               <h2 className="text-3xl font-bold text-navy dark:text-white mb-8">Get In Touch</h2>
                
                <div className="space-y-8">
                   <div className="flex items-start gap-4">
@@ -32,8 +32,8 @@ export default function ContactPage() {
                         <Mail className="w-6 h-6 text-primary" />
                      </div>
                      <div>
-                        <h4 className="font-bold text-navy text-lg mb-1">Email Us</h4>
-                        <a href="mailto:hello@rocketsolutions.com" className="text-slate-600 hover:text-primary transition-colors">hello@rocketsolutions.com</a>
+                        <h4 className="font-bold text-navy dark:text-white text-lg mb-1">Email Us</h4>
+                        <a href="mailto:hello@rocketsolutions.com" className="text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">hello@rocketsolutions.com</a>
                      </div>
                   </div>
                   
@@ -42,17 +42,17 @@ export default function ContactPage() {
                         <MapPin className="w-6 h-6 text-primary" />
                      </div>
                      <div>
-                        <h4 className="font-bold text-navy text-lg mb-1">Service Area</h4>
-                        <p className="text-slate-600">Nationwide (US) Deployment</p>
+                        <h4 className="font-bold text-navy dark:text-white text-lg mb-1">Service Area</h4>
+                        <p className="text-slate-600 dark:text-slate-300">Nationwide (US) Deployment</p>
                      </div>
                   </div>
                </div>
 
-               <hr className="my-10 border-slate-200" />
+               <hr className="my-10 border-slate-200 dark:border-slate-800" />
 
                <div>
-                  <h4 className="font-bold text-navy text-lg mb-4">Want a demo immediately?</h4>
-                  <p className="text-slate-600 mb-6">Tell us your pain points and property size using the form, and we'll prep a tailored consultation walkthrough for your team.</p>
+                  <h4 className="font-bold text-navy dark:text-white text-lg mb-4">Want a demo immediately?</h4>
+                  <p className="text-slate-600 dark:text-slate-300 mb-6">Tell us your pain points and property size using the form, and we'll prep a tailored consultation walkthrough for your team.</p>
                </div>
             </div>
 

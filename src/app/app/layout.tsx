@@ -25,7 +25,7 @@ export default function AppLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900/50 dark:bg-navy-dark flex">
       {/* Mobile sidebar backdrop */}
       {sidebarOpen && (
          <div 
@@ -86,10 +86,10 @@ export default function AppLayout({
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
         {/* Top Header */}
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 sm:px-6 lg:px-8 shrink-0 relative z-30 shadow-sm">
+        <header className="h-16 bg-white dark:bg-slate-900 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 dark:border-slate-800 flex items-center justify-between px-4 sm:px-6 lg:px-8 shrink-0 relative z-30 shadow-sm transition-colors">
            <div className="flex items-center flex-1">
               <button 
-                className="lg:hidden p-2 -ml-2 mr-4 text-slate-500 hover:text-navy rounded-md hover:bg-slate-100"
+                className="lg:hidden p-2 -ml-2 mr-4 text-slate-500 dark:text-slate-400 dark:text-slate-400 hover:text-navy dark:text-white dark:hover:text-white rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
                 onClick={() => setSidebarOpen(true)}
               >
                  <Menu className="w-6 h-6" />
@@ -101,15 +101,15 @@ export default function AppLayout({
                  <input 
                    type="text" 
                    placeholder="Search properties, zones, tasks..." 
-                   className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-slate-50"
+                   className="w-full pl-10 pr-4 py-2 border border-slate-300 dark:border-slate-700 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-slate-50 dark:bg-slate-900/50 dark:bg-slate-800 dark:text-white placeholder:text-slate-400 transition-colors"
                  />
               </div>
            </div>
 
            <div className="flex items-center gap-4">
-              <button className="relative p-2 text-slate-400 hover:text-navy transition-colors">
+              <button className="relative p-2 text-slate-400 hover:text-navy dark:text-white dark:hover:text-white transition-colors">
                  <Bell className="w-6 h-6" />
-                 <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                 <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white dark:border-slate-900"></span>
               </button>
            </div>
         </header>

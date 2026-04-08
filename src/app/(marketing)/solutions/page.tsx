@@ -23,35 +23,35 @@ export default function SolutionsPage() {
       <section className="py-20 lg:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Core Capabilities</h2>
-            <p className="text-lg text-slate-600">Built for the demands of high-traffic environments.</p>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Core Capabilities</h2>
+            <p className="text-lg text-slate-600 dark:text-slate-300">Built for the demands of high-traffic environments.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-surface p-8 rounded-2xl border border-surface-dark">
+            <div className="bg-surface dark:bg-slate-900 p-8 rounded-2xl border border-surface-dark dark:border-slate-800">
               <Activity className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Occupancy-based optimization</h3>
-              <p className="text-slate-600">Stop guessing. We monitor exact usage patterns using anonymous environmental sensors to dictate cleaning schedules based on real demand, not the clock.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Occupancy-based optimization</h3>
+              <p className="text-slate-600 dark:text-slate-300">Stop guessing. We monitor exact usage patterns using anonymous environmental sensors to dictate cleaning schedules based on real demand, not the clock.</p>
             </div>
-            <div className="bg-surface p-8 rounded-2xl border border-surface-dark">
+            <div className="bg-surface dark:bg-slate-900 p-8 rounded-2xl border border-surface-dark dark:border-slate-800">
               <Navigation className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Task routing & prioritization</h3>
-              <p className="text-slate-600">Automatically direct staff or vendors to high-traffic zones that need immediate attention, eliminating wasted labor on empty spaces.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Task routing & prioritization</h3>
+              <p className="text-slate-600 dark:text-slate-300">Automatically direct staff or vendors to high-traffic zones that need immediate attention, eliminating wasted labor on empty spaces.</p>
             </div>
-            <div className="bg-surface p-8 rounded-2xl border border-surface-dark">
+            <div className="bg-surface dark:bg-slate-900 p-8 rounded-2xl border border-surface-dark dark:border-slate-800">
               <CheckCircle2 className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Service verification</h3>
-              <p className="text-slate-600">Gather digitally verifiable logs of all cleaning tasks. Property managers get dashboard proof of execution and reporting for total accountability.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Service verification</h3>
+              <p className="text-slate-600 dark:text-slate-300">Gather digitally verifiable logs of all cleaning tasks. Property managers get dashboard proof of execution and reporting for total accountability.</p>
             </div>
-            <div className="bg-surface p-8 rounded-2xl border border-surface-dark">
+            <div className="bg-surface dark:bg-slate-900 p-8 rounded-2xl border border-surface-dark dark:border-slate-800">
               <Eye className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Operational monitoring</h3>
-              <p className="text-slate-600">Maintain a continuous pulse on your common areas. Spot usage spikes instantly and preempt resident, guest, or tenant complaints.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Operational monitoring</h3>
+              <p className="text-slate-600 dark:text-slate-300">Maintain a continuous pulse on your common areas. Spot usage spikes instantly and preempt resident, guest, or tenant complaints.</p>
             </div>
-            <div className="bg-surface p-8 rounded-2xl border border-surface-dark lg:col-span-2">
+            <div className="bg-surface dark:bg-slate-900 p-8 rounded-2xl border border-surface-dark dark:border-slate-800 lg:col-span-2">
               <Rocket className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Pilot deployment & support</h3>
-              <p className="text-slate-600 max-w-2xl">We don't just hand you software. Every deployment begins with a structured pilot program featuring dedicated rollout support, zone selection, sensor installation, and KPI tracking to prove exactly what you are saving before a large-scale rollout.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Pilot deployment & support</h3>
+              <p className="text-slate-600 dark:text-slate-300 max-w-2xl">We don't just hand you software. Every deployment begins with a structured pilot program featuring dedicated rollout support, zone selection, sensor installation, and KPI tracking to prove exactly what you are saving before a large-scale rollout.</p>
             </div>
           </div>
         </div>

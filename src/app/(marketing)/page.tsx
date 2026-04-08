@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-navy text-white overflow-hidden py-24 lg:py-32">
+      <section className="relative bg-navy dark:bg-navy-dark text-white overflow-hidden py-24 lg:py-32 transition-colors">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop')] bg-cover bg-center opacity-10 mix-blend-overlay"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/95 to-navy/50"></div>
         
@@ -33,7 +33,7 @@ export default function Home() {
             </Link>
             <Link
               href="/how-it-works"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 border border-white/20 rounded-lg hover:bg-white/20 transition-all backdrop-blur-sm"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 dark:bg-slate-900/10 border border-white/20 rounded-lg hover:bg-white/20 dark:bg-slate-900/20 transition-all backdrop-blur-sm"
             >
               See How It Works
             </Link>
@@ -42,53 +42,53 @@ export default function Home() {
       </section>
 
       {/* Trust & Credibility Section */}
-      <section className="bg-surface py-12 border-b border-surface-dark">
+      <section className="bg-surface dark:bg-slate-900 py-12 border-b border-surface-dark dark:border-slate-800 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm font-semibold text-center text-navy/60 uppercase tracking-widest mb-8">
+          <p className="text-sm font-semibold text-center text-navy dark:text-white/60 uppercase tracking-widest mb-8">
             Designed for operational excellence at scale
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-70 items-center justify-items-center grayscale">
             {/* Placeholder trust marks suitable for launch MVP */}
-            <div className="flex items-center gap-2 font-bold text-xl text-navy"><Building2 className="w-8 h-8"/> Class-A Properties</div>
-            <div className="flex items-center gap-2 font-bold text-xl text-navy"><MapPin className="w-8 h-8"/> Multi-Family</div>
-            <div className="flex items-center gap-2 font-bold text-xl text-navy"><BarChart3 className="w-8 h-8"/> Measured ROI</div>
-            <div className="flex items-center gap-2 font-bold text-xl text-navy"><Shield className="w-8 h-8"/> Privacy First</div>
+            <div className="flex items-center gap-2 font-bold text-xl text-navy dark:text-white"><Building2 className="w-8 h-8"/> Class-A Properties</div>
+            <div className="flex items-center gap-2 font-bold text-xl text-navy dark:text-white"><MapPin className="w-8 h-8"/> Multi-Family</div>
+            <div className="flex items-center gap-2 font-bold text-xl text-navy dark:text-white"><BarChart3 className="w-8 h-8"/> Measured ROI</div>
+            <div className="flex items-center gap-2 font-bold text-xl text-navy dark:text-white"><Shield className="w-8 h-8"/> Privacy First</div>
           </div>
         </div>
       </section>
 
       {/* Problem Section */}
-      <section className="py-20 lg:py-32">
+      <section className="py-20 lg:py-32 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Fixed cleaning schedules are wasting your labor.</h2>
-            <p className="text-lg text-navy/70 text-balance">
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Fixed cleaning schedules are wasting your labor.</h2>
+            <p className="text-lg text-navy dark:text-white/70 text-balance">
               Most properties operate in the dark—cleaning empty rooms while high-traffic areas become a mess.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-8 bg-surface rounded-2xl border border-surface-dark">
+            <div className="p-8 bg-surface dark:bg-slate-900 rounded-2xl border border-surface-dark dark:border-slate-800">
               <Clock className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Wasted Labor</h3>
-              <p className="text-navy/70">Staff spend hours cleaning underutilized spaces simply because the schedule says so.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Wasted Labor</h3>
+              <p className="text-navy dark:text-white/70">Staff spend hours cleaning underutilized spaces simply because the schedule says so.</p>
             </div>
-            <div className="p-8 bg-surface rounded-2xl border border-surface-dark">
+            <div className="p-8 bg-surface dark:bg-slate-900 rounded-2xl border border-surface-dark dark:border-slate-800">
               <Building2 className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">Missed Peak Usage</h3>
-              <p className="text-navy/70">High-traffic amenities get dirty fast. Complaints happen before you even know there's a problem.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">Missed Peak Usage</h3>
+              <p className="text-navy dark:text-white/70">High-traffic amenities get dirty fast. Complaints happen before you even know there's a problem.</p>
             </div>
-            <div className="p-8 bg-surface rounded-2xl border border-surface-dark">
+            <div className="p-8 bg-surface dark:bg-slate-900 rounded-2xl border border-surface-dark dark:border-slate-800">
               <BarChart3 className="w-10 h-10 text-primary mb-6" />
-              <h3 className="text-xl font-bold text-navy mb-3">No Visibility</h3>
-              <p className="text-navy/70">Property managers lack real-time proof that service actually happened when and where it was needed.</p>
+              <h3 className="text-xl font-bold text-navy dark:text-white mb-3">No Visibility</h3>
+              <p className="text-navy dark:text-white/70">Property managers lack real-time proof that service actually happened when and where it was needed.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Solution Section (How It Works Preview) */}
-      <section className="bg-navy text-white py-20 lg:py-32">
+      <section className="bg-navy dark:bg-navy-dark text-white py-20 lg:py-32 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -161,11 +161,11 @@ export default function Home() {
       </section>
 
       {/* Industries Preview */}
-      <section className="py-20 lg:py-32 bg-surface">
+      <section className="py-20 lg:py-32 bg-surface dark:bg-slate-900 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Built for complex property operations.</h2>
-            <p className="text-lg text-navy/70">
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Built for complex property operations.</h2>
+            <p className="text-lg text-navy dark:text-white/70">
               A smarter framework crafted for specific industry use cases.
             </p>
           </div>
@@ -177,9 +177,9 @@ export default function Home() {
               { title: 'Commercial', desc: 'Adapt cleaning routines dynamically as office occupancy fluctuates daily.' },
               { title: 'Mixed-Use', desc: 'Harmonize public retail areas with private residential zones seamlessly.' },
             ].map((industry, i) => (
-              <div key={i} className="group bg-white p-6 rounded-2xl border border-surface-dark hover:border-primary/50 transition-all hover:shadow-lg">
-                <h3 className="text-xl font-bold text-navy mb-2 group-hover:text-primary transition-colors">{industry.title}</h3>
-                <p className="text-sm text-navy/70 leading-relaxed mb-4">{industry.desc}</p>
+              <div key={i} className="group bg-white dark:bg-slate-900 p-6 rounded-2xl border border-surface-dark dark:border-slate-800 hover:border-primary/50 transition-all hover:shadow-lg">
+                <h3 className="text-xl font-bold text-navy dark:text-white mb-2 group-hover:text-primary transition-colors">{industry.title}</h3>
+                <p className="text-sm text-navy dark:text-white/70 leading-relaxed mb-4">{industry.desc}</p>
                 <Link href="/industries" className="text-primary text-sm font-semibold inline-flex items-center gap-1">
                   Learn more <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -190,7 +190,7 @@ export default function Home() {
       </section>
       
       {/* Pilot CTA */}
-      <section className="relative py-24 bg-navy text-center px-4 sm:px-6">
+      <section className="relative py-24 bg-navy dark:bg-navy-dark text-center px-4 sm:px-6 transition-colors">
         <div className="absolute inset-0 bg-primary/5"></div>
         <div className="relative max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Start your first pilot.</h2>
@@ -201,13 +201,13 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link
               href="/pilot-program"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-navy bg-white rounded-lg hover:bg-slate-100 transition-all shadow-lg"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-navy dark:text-white bg-white dark:bg-slate-800 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-lg"
             >
               Request a Pilot Consultation
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 transition-all"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white border border-white/20 rounded-lg hover:bg-white/10 dark:bg-slate-900/10 transition-all"
             >
               Contact Us
             </Link>

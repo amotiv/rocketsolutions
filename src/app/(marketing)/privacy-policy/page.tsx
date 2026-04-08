@@ -7,23 +7,23 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen bg-surface py-20">
+    <div className="min-h-screen bg-surface dark:bg-slate-900 py-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="bg-white rounded-3xl p-8 sm:p-12 border border-slate-200 shadow-sm">
-            <h1 className="text-3xl sm:text-4xl font-bold text-navy mb-8 border-b border-slate-200 pb-6">Privacy Policy</h1>
+         <div className="bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-12 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <h1 className="text-3xl sm:text-4xl font-bold text-navy dark:text-white mb-8 border-b border-slate-200 dark:border-slate-800 pb-6">Privacy Policy</h1>
             
-            <div className="prose prose-slate max-w-none text-slate-600 space-y-8">
+            <div className="prose prose-slate max-w-none text-slate-600 dark:text-slate-300 space-y-8">
                <p><em>Last Updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</em></p>
 
                <section>
-                  <h2 className="text-xl font-bold text-navy mb-3">1. Introduction</h2>
+                  <h2 className="text-xl font-bold text-navy dark:text-white mb-3">1. Introduction</h2>
                   <p>
                      Rocket Solutions ("we," "our," or "us") respects your privacy. This Privacy Policy outlines how we collect, use, and handle information through our website (rocketsolutions.com) and our proprietary operational optimization systems deployed in commercial properties.
                   </p>
                </section>
 
                <section>
-                  <h2 className="text-xl font-bold text-navy mb-3">2. Website Data & Analytics</h2>
+                  <h2 className="text-xl font-bold text-navy dark:text-white mb-3">2. Website Data & Analytics</h2>
                   <p>When you visit our website, we may collect standard analytical information:</p>
                   <ul className="list-disc pl-5 space-y-2 mt-2">
                      <li><strong>Cookies & Tracking:</strong> We use basic analytics (such as Google Analytics 4) to understand how visitors interact with our site, including pages visited and time spent.</li>
@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
                </section>
 
                <section>
-                  <h2 className="text-xl font-bold text-navy mb-3">3. Lead Capture & Form Data</h2>
+                  <h2 className="text-xl font-bold text-navy dark:text-white mb-3">3. Lead Capture & Form Data</h2>
                   <p>When you fill out a contact form, pilot inquiry, or request a consultation, we collect the information you voluntarily provide:</p>
                   <ul className="list-disc pl-5 space-y-2 mt-2">
                      <li>Name, Email, Phone Number</li>
@@ -43,7 +43,7 @@ export default function PrivacyPolicyPage() {
                </section>
 
                <section>
-                  <h2 className="text-xl font-bold text-navy mb-3 bg-primary/10 inline-block px-3 py-1 rounded">4. Hardware & Sensor Data Guarantees</h2>
+                  <h2 className="text-xl font-bold text-navy dark:text-white mb-3 bg-primary/10 inline-block px-3 py-1 rounded">4. Hardware & Sensor Data Guarantees</h2>
                   <p className="mt-4">Our core service involves deploying property sensors. Our approach to privacy here is absolute:</p>
                   <ul className="list-disc pl-5 space-y-2 mt-2">
                      <li><strong>Anonymous Only:</strong> Our sensors measure environmental changes and motion density (e.g., "30 events in the lobby"). They do not capture who caused the event.</li>
@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
                </section>
 
                <section>
-                  <h2 className="text-xl font-bold text-navy mb-3">5. Contact Us</h2>
+                  <h2 className="text-xl font-bold text-navy dark:text-white mb-3">5. Contact Us</h2>
                   <p>If you have any questions or concerns about this policy or our privacy practices, please contact us at:</p>
                   <p className="font-medium mt-2">hello@rocketsolutions.com</p>
                </section>

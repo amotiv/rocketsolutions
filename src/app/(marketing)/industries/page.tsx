@@ -67,18 +67,18 @@ export default function IndustriesPage() {
               <div key={ind.id} id={ind.id} className={`flex flex-col lg:flex-row gap-16 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
                 <div className="w-full lg:w-1/2">
                    <div className="mb-6">{ind.icon}</div>
-                   <h2 className="text-3xl font-bold text-navy mb-6">{ind.title}</h2>
+                   <h2 className="text-3xl font-bold text-navy dark:text-white mb-6">{ind.title}</h2>
                    
                    <div className="mb-8">
-                     <p className="font-semibold text-lg text-navy mb-3">The Challenge:</p>
-                     <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                     <p className="font-semibold text-lg text-navy dark:text-white mb-3">The Challenge:</p>
+                     <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-300">
                        {ind.painPoints.map((point, i) => <li key={i}>{point}</li>)}
                      </ul>
                    </div>
                    
                    <div className="mb-8">
-                     <p className="font-semibold text-lg text-navy mb-3">Key Benefits:</p>
-                     <ul className="list-disc pl-5 space-y-2 text-slate-600">
+                     <p className="font-semibold text-lg text-navy dark:text-white mb-3">Key Benefits:</p>
+                     <ul className="list-disc pl-5 space-y-2 text-slate-600 dark:text-slate-300">
                        {ind.benefits.map((point, i) => <li key={i}>{point}</li>)}
                      </ul>
                    </div>
@@ -89,15 +89,15 @@ export default function IndustriesPage() {
                 </div>
                 
                 <div className="w-full lg:w-1/2">
-                  <div className="bg-surface rounded-3xl p-8 lg:p-12 border border-surface-dark shadow-xl relative overflow-hidden">
+                  <div className="bg-surface dark:bg-slate-900 rounded-3xl p-8 lg:p-12 border border-surface-dark dark:border-slate-800 shadow-xl relative overflow-hidden">
                     <div className="absolute top-0 right-0 p-8 opacity-5">
                        {ind.icon}
                     </div>
                     <div className="relative z-10">
-                      <h3 className="text-xl font-bold text-navy mb-4 border-b border-slate-200 pb-4">Target Zones</h3>
+                      <h3 className="text-xl font-bold text-navy dark:text-white mb-4 border-b border-slate-200 dark:border-slate-800 pb-4">Target Zones</h3>
                       <div className="flex flex-wrap gap-2 mb-10">
                         {ind.zones.map((zone, i) => (
-                          <span key={i} className="px-3 py-1 bg-white border border-slate-200 rounded-full text-sm font-medium text-slate-700 shadow-sm">
+                          <span key={i} className="px-3 py-1 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full text-sm font-medium text-slate-700 dark:text-slate-200 shadow-sm">
                             {zone}
                           </span>
                         ))}
@@ -120,7 +120,7 @@ export default function IndustriesPage() {
          <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold text-white mb-6">Ready to optimize your portfolio?</h2>
             <p className="text-white/80 text-xl mb-10">Stop paying for fixed-schedule cleaning that doesn't align with your actual usage.</p>
-            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white rounded-lg hover:bg-slate-50 transition-all shadow-xl">
+            <Link href="/contact" className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-primary bg-white dark:bg-slate-900 rounded-lg hover:bg-slate-50 dark:bg-slate-900/50 transition-all shadow-xl">
                Get in Touch with Our Team
             </Link>
          </div>

@@ -27,22 +27,22 @@ export default function AboutPage() {
                <div className="space-y-8">
                   <div>
                      <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-3 flex items-center gap-2"><Flag className="w-5 h-5"/> Our Mission</h2>
-                     <h3 className="text-3xl font-bold text-navy mb-4">Space is dynamic. Operations should be too.</h3>
-                     <p className="text-lg text-slate-600 leading-relaxed text-balance">
+                     <h3 className="text-3xl font-bold text-navy dark:text-white mb-4">Space is dynamic. Operations should be too.</h3>
+                     <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed text-balance">
                         For decades, the property management and facility operations industries have run on paper checklists and fixed service intervals. A restroom is cleaned at 10 AM, regardless of whether three people or three hundred people have used it. 
                      </p>
                   </div>
                   
                   <div>
                      <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-3 flex items-center gap-2"><Target className="w-5 h-5"/> Why We Exist</h2>
-                     <p className="text-lg text-slate-600 leading-relaxed">
+                     <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                         We saw firsthand how this disconnect wastes millions of dollars in labor while simultaneously driving up resident and guest complaints. Rocket Solutions exists to close that gap. By bringing anonymous occupancy data directly into vendor routing, we ensure that labor is spent precisely where it creates the highest value.
                      </p>
                   </div>
                </div>
 
-               <div className="bg-surface rounded-3xl p-8 lg:p-12 border border-surface-dark shadow-lg relative">
-                  <h3 className="text-2xl font-bold text-navy mb-6">Built by Operators</h3>
+               <div className="bg-surface dark:bg-slate-900 rounded-3xl p-8 lg:p-12 border border-surface-dark dark:border-slate-800 shadow-lg relative">
+                  <h3 className="text-2xl font-bold text-navy dark:text-white mb-6">Built by Operators</h3>
                   <div className="prose prose-slate prose-lg">
                      <p>
                         We aren't a generic AI startup looking for a problem to solve. We are operators who felt the pain of trying to maintain Class-A standards across massive footprints with shrinking operational budgets.

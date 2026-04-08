@@ -78,10 +78,10 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
             &copy; {new Date().getFullYear()} Rocket Solutions. All rights reserved.
           </p>
-          <div className="text-sm text-slate-500 flex items-center gap-1">
+          <div className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
             Designed for better property operations.
           </div>
         </div>

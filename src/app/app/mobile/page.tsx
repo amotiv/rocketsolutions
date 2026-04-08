@@ -42,8 +42,8 @@ export default function MobileCleanerWorkflow() {
       time: 'Due By 1:00 PM',
       notes: 'Standard mid-day wipe down.',
       checklist: ['Wipe all cardio screens', 'Check sanitizing wipe dispensers'],
-      color: 'bg-white text-navy border-slate-200',
-      badge: 'bg-slate-500 text-white'
+      color: 'bg-white dark:bg-slate-900 text-navy dark:text-white border-slate-200 dark:border-slate-800',
+      badge: 'bg-slate-50 dark:bg-slate-900/500 text-white'
     }
   ];
 
@@ -53,7 +53,7 @@ export default function MobileCleanerWorkflow() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-slate-50 min-h-[80vh] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 sm:mt-10 relative flex flex-col">
+    <div className="max-w-md mx-auto bg-slate-50 dark:bg-slate-900/50 min-h-[80vh] rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-800 sm:mt-10 relative flex flex-col">
       
       {/* Mobile App Header */}
       <div className="bg-navy text-white px-6 py-5 shrink-0">
@@ -67,7 +67,7 @@ export default function MobileCleanerWorkflow() {
             </div>
          </div>
          <div className="flex gap-2">
-            <span className="bg-white/10 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+            <span className="bg-white/10 dark:bg-slate-900/10 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
                {tasks.filter(t => t.id !== taskCompleted).length} Tasks Left
             </span>
             <span className="bg-green-500/20 text-green-300 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm border border-green-500/30">
@@ -111,8 +111,8 @@ export default function MobileCleanerWorkflow() {
            {tasks.every(t => t.id === taskCompleted) && (
               <div className="flex flex-col items-center justify-center py-20 text-center opacity-60">
                  <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
-                 <h3 className="font-bold text-lg text-navy">All caught up!</h3>
-                 <p className="text-slate-500 text-sm">No pending high-priority zones.</p>
+                 <h3 className="font-bold text-lg text-navy dark:text-white">All caught up!</h3>
+                 <p className="text-slate-500 dark:text-slate-400 text-sm">No pending high-priority zones.</p>
               </div>
            )}
         </div>
@@ -120,16 +120,16 @@ export default function MobileCleanerWorkflow() {
 
       {/* Active Task Execution View */}
       {activeTask && (
-        <div className="absolute inset-0 bg-white z-10 flex flex-col animate-in slide-in-from-right-full duration-300">
+        <div className="absolute inset-0 bg-white dark:bg-slate-900 z-10 flex flex-col animate-in slide-in-from-right-full duration-300">
            
            {/* Task Header */}
-           <div className="bg-slate-100 px-4 py-4 border-b border-slate-200 flex items-center gap-3 shrink-0">
-             <button onClick={() => setActiveTask(null)} className="p-2 text-slate-500 bg-white rounded-full shadow-sm hover:text-navy">
+           <div className="bg-slate-100 px-4 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3 shrink-0">
+             <button onClick={() => setActiveTask(null)} className="p-2 text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 rounded-full shadow-sm hover:text-navy dark:text-white">
                 <ChevronRight className="w-5 h-5 rotate-180" />
              </button>
              <div>
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">{tasks.find(t => t.id === activeTask)?.priority} Task</span>
-                <h2 className="font-bold text-navy leading-tight">{tasks.find(t => t.id === activeTask)?.zone}</h2>
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{tasks.find(t => t.id === activeTask)?.priority} Task</span>
+                <h2 className="font-bold text-navy dark:text-white leading-tight">{tasks.find(t => t.id === activeTask)?.zone}</h2>
              </div>
            </div>
 
@@ -139,30 +139,30 @@ export default function MobileCleanerWorkflow() {
                  <strong>Supervisor Note:</strong> {tasks.find(t => t.id === activeTask)?.notes}
               </div>
 
-              <h3 className="font-bold text-navy mb-4 border-b border-slate-100 pb-2">Required Checklist</h3>
+              <h3 className="font-bold text-navy dark:text-white mb-4 border-b border-slate-100 dark:border-slate-800/50 pb-2">Required Checklist</h3>
               <div className="space-y-3 mb-8">
                  {tasks.find(t => t.id === activeTask)?.checklist.map((item, i) => (
-                    <label key={i} className="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:bg-slate-50 transition-colors">
-                       <input type="checkbox" className="w-5 h-5 text-primary border-slate-300 rounded focus:ring-primary" />
-                       <span className="text-slate-700 text-sm font-medium">{item}</span>
+                    <label key={i} className="flex items-center gap-3 p-3 border border-slate-200 dark:border-slate-800 rounded-xl cursor-pointer hover:bg-slate-50 dark:bg-slate-900/50 transition-colors">
+                       <input type="checkbox" className="w-5 h-5 text-primary border-slate-300 dark:border-slate-700 rounded focus:ring-primary" />
+                       <span className="text-slate-700 dark:text-slate-200 text-sm font-medium">{item}</span>
                     </label>
                  ))}
               </div>
 
               <div className="grid grid-cols-2 gap-3 mb-6">
-                 <button className="flex flex-col items-center justify-center p-4 border border-slate-200 rounded-xl text-slate-500 hover:bg-slate-50 transition-colors">
-                    <ScanLine className="w-6 h-6 mb-2 text-navy" />
-                    <span className="text-xs font-bold text-navy">Scan Zone QR</span>
+                 <button className="flex flex-col items-center justify-center p-4 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:bg-slate-900/50 transition-colors">
+                    <ScanLine className="w-6 h-6 mb-2 text-navy dark:text-white" />
+                    <span className="text-xs font-bold text-navy dark:text-white">Scan Zone QR</span>
                  </button>
-                 <button className="flex flex-col items-center justify-center p-4 border border-slate-200 rounded-xl text-slate-500 hover:bg-slate-50 transition-colors">
+                 <button className="flex flex-col items-center justify-center p-4 border border-slate-200 dark:border-slate-800 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:bg-slate-900/50 transition-colors">
                     <AlertTriangle className="w-6 h-6 mb-2 text-red-500" />
-                    <span className="text-xs font-bold text-navy">Flag Issue</span>
+                    <span className="text-xs font-bold text-navy dark:text-white">Flag Issue</span>
                  </button>
               </div>
            </div>
            
            {/* Completion Action */}
-           <div className="absolute bottom-0 left-0 w-full p-4 bg-white border-t border-slate-200 shrink-0 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
+           <div className="absolute bottom-0 left-0 w-full p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shrink-0 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
               <button 
                 onClick={() => handleComplete(activeTask)}
                 className="w-full bg-primary text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 active:bg-primary-hover shadow-lg shadow-primary/30"

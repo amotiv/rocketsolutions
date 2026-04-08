@@ -72,16 +72,16 @@ export default function VendorsPage() {
       {/* Header section with search and actions */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-3xl font-bold text-navy flex items-center gap-3">
+          <h1 className="text-3xl font-bold text-navy dark:text-white flex items-center gap-3">
             <Users className="w-8 h-8 text-primary" />
             Vendor & Staff Directory
           </h1>
-          <p className="text-slate-500 mt-1">
+          <p className="text-slate-500 dark:text-slate-400 mt-1">
             Manage your cleaning contractors, track schedules, and review performance SLAs.
           </p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-2">
+          <button className="px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:bg-slate-900/50 transition-colors shadow-sm flex items-center gap-2">
             <Filter className="w-4 h-4" /> Filter
           </button>
           <button className="px-4 py-2.5 bg-primary text-white rounded-lg text-sm font-bold hover:bg-primary-hover transition-colors shadow-sm shadow-primary/30 flex items-center gap-2">
@@ -93,11 +93,11 @@ export default function VendorsPage() {
       {/* KPI Stats Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Active Shift */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col relative overflow-hidden group">
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col relative overflow-hidden group">
            <div className="absolute top-0 left-0 w-1 h-full bg-green-500"></div>
-           <span className="text-slate-500 text-sm font-medium mb-1">Active on Shift</span>
+           <span className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Active on Shift</span>
            <div className="flex items-end gap-3 mt-auto">
-             <span className="text-3xl font-bold text-navy">12</span>
+             <span className="text-3xl font-bold text-navy dark:text-white">12</span>
              <span className="text-slate-400 text-sm mb-1 flex items-center gap-1">
                <span className="relative flex h-2 w-2 mr-1">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -109,17 +109,17 @@ export default function VendorsPage() {
         </div>
 
         {/* Total Roster */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
-           <span className="text-slate-500 text-sm font-medium mb-1">Total Roster</span>
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+           <span className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Total Roster</span>
            <div className="flex items-end gap-3 mt-auto">
-             <span className="text-3xl font-bold text-navy">48</span>
+             <span className="text-3xl font-bold text-navy dark:text-white">48</span>
              <span className="text-slate-400 text-sm mb-1">Registered staff</span>
            </div>
         </div>
 
         {/* Aggregate Service Score */}
-        <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
-           <span className="text-slate-500 text-sm font-medium mb-1">Avg Service Score</span>
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col">
+           <span className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-1">Avg Service Score</span>
            <div className="flex items-end gap-3 mt-auto">
              <span className="text-3xl font-bold text-blue-600">94.2</span>
              <span className="text-blue-500 text-sm mb-1 font-medium bg-blue-50 px-2 rounded flex items-center gap-1">
@@ -129,7 +129,7 @@ export default function VendorsPage() {
         </div>
 
         {/* SLA Warning */}
-        <div className="bg-white p-5 rounded-2xl border border-red-100 shadow-sm flex flex-col relative overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-red-100 shadow-sm flex flex-col relative overflow-hidden">
            <div className="absolute -right-4 -top-4 p-4 opacity-5"><ShieldAlert className="w-24 h-24 text-red-500"/></div>
            <span className="text-red-500 text-sm font-bold mb-1 relative z-10">SLA Warnings</span>
            <div className="flex items-end gap-3 mt-auto relative z-10">
@@ -140,19 +140,19 @@ export default function VendorsPage() {
       </div>
 
       {/* Roster Table Section */}
-      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden flex flex-col">
         {/* Table Toolbar */}
-        <div className="p-4 border-b border-slate-100 bg-slate-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 border-b border-slate-100 dark:border-slate-800/50 bg-slate-50/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
            <div className="flex items-center gap-2">
-             <h2 className="font-bold text-navy text-lg tracking-tight">Active Roster</h2>
-             <span className="bg-slate-200 text-slate-600 px-2.5 py-0.5 rounded-full text-xs font-bold">5 shown</span>
+             <h2 className="font-bold text-navy dark:text-white text-lg tracking-tight">Active Roster</h2>
+             <span className="bg-slate-200 text-slate-600 dark:text-slate-300 px-2.5 py-0.5 rounded-full text-xs font-bold">5 shown</span>
            </div>
            <div className="relative max-w-sm w-full">
               <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input 
                 type="text" 
                 placeholder="Search staff by name or role..." 
-                className="w-full pl-9 pr-4 py-2 bg-white border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full pl-9 pr-4 py-2 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
            </div>
         </div>
@@ -161,7 +161,7 @@ export default function VendorsPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-white text-xs uppercase tracking-wider text-slate-400 font-bold border-b border-slate-100">
+              <tr className="bg-white dark:bg-slate-900 text-xs uppercase tracking-wider text-slate-400 font-bold border-b border-slate-100 dark:border-slate-800/50">
                 <th className="px-6 py-4">Staff Member</th>
                 <th className="px-6 py-4">Role</th>
                 <th className="px-6 py-4">Current Status</th>
@@ -179,13 +179,13 @@ export default function VendorsPage() {
                         {vendor.initials}
                       </div>
                       <div>
-                        <div className="font-bold text-navy">{vendor.name}</div>
-                        <div className="text-xs text-slate-500 font-medium">ID: {vendor.id.toUpperCase()}072</div>
+                        <div className="font-bold text-navy dark:text-white">{vendor.name}</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-400 font-medium">ID: {vendor.id.toUpperCase()}072</div>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-slate-700">{vendor.role}</div>
+                    <div className="text-sm font-medium text-slate-700 dark:text-slate-200">{vendor.role}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex flex-col gap-1">
@@ -195,7 +195,7 @@ export default function VendorsPage() {
                         </span>
                       )}
                       {vendor.status === 'Off Duty' && (
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-600 border border-slate-200 w-fit">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-slate-100 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 w-fit">
                           <Clock className="w-3 h-3" /> Off Duty
                         </span>
                       )}
@@ -213,7 +213,7 @@ export default function VendorsPage() {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap hidden md:table-cell">
-                    <div className="text-sm text-slate-600">
+                    <div className="text-sm text-slate-600 dark:text-slate-300">
                       {vendor.assignment !== 'Unassigned' ? (
                         <Link href="/app/properties/1" className="hover:text-primary hover:underline font-medium">
                           {vendor.assignment}
@@ -231,7 +231,7 @@ export default function VendorsPage() {
                             style={{ width: `${vendor.score}%` }}
                           ></div>
                        </div>
-                       <span className={`text-xs font-bold ${vendor.score >= 90 ? 'text-navy' : 'text-orange-600'}`}>
+                       <span className={`text-xs font-bold ${vendor.score >= 90 ? 'text-navy dark:text-white' : 'text-orange-600'}`}>
                          {vendor.score}
                        </span>
                     </div>
@@ -241,7 +241,7 @@ export default function VendorsPage() {
                       <button className="text-primary hover:text-primary-hover hover:bg-primary/5 px-3 py-1.5 rounded transition-colors hidden sm:block font-bold">
                         Schedule
                       </button>
-                      <button className="text-slate-400 hover:text-navy p-1.5 rounded hover:bg-slate-100 transition-colors">
+                      <button className="text-slate-400 hover:text-navy dark:text-white p-1.5 rounded hover:bg-slate-100 transition-colors">
                         <MoreVertical className="w-5 h-5" />
                       </button>
                     </div>
