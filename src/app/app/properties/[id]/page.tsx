@@ -1,27 +1,28 @@
-import { createClient } from '@/utils/supabase/server';
 import { 
   Building2, CheckCircle2, AlertCircle, Clock, CheckSquare, 
   MapPin, Activity, ArrowUpRight, Ban, TrendingUp 
 } from 'lucide-react';
+
+const MOCK_ZONES = [
+  { id: 'z1', name: 'Main Lobby', score: 88, status: 'RED', label: 'Clean Now', lastCleaned: '12 hrs ago', activity: 'High entry (Raining)', assignedTo: 'Carlos M. (Porter)', action: '' },
+  { id: 'z2', name: '2nd Fl Restroom', score: 65, status: 'ORANGE', label: 'Inspect Soon', lastCleaned: '2 hrs ago', activity: '45 uses detected', assignedTo: '', action: 'System monitor' },
+  { id: 'z3', name: 'Fitness Center', score: 42, status: 'YELLOW', label: 'Monitoring', lastCleaned: '4 hrs ago', activity: 'Normal (Morning)', assignedTo: '', action: 'Await 60 threshold' },
+  { id: 'z4', name: 'Package Rm & Mail', score: 12, status: 'GREEN', label: 'No Action', lastCleaned: '', activity: '', assignedTo: '', action: '', result: 'Saved 20m of labor', skipped: true }
+];
+
+const MOCK_PROPERTY_TASKS = [
+  { id: 't1', title: 'Clubhouse Glass Wipe', priority: 'Overdue', assignee: 'Unassigned', status: 'Open' },
+  { id: 't2', title: 'Lobby Entry Mats', priority: 'Active', assignee: 'Carlos M.', status: 'In Progress' },
+  { id: 't3', title: 'Gym Restrooms (B)', priority: 'Completed', assignee: '', status: 'Completed', verifiedAt: '9:15 AM' }
+];
 
 export default async function PropertyCommandCenter({
   params,
 }: {
   params: Promise<{ id: string }>
 }) {
-  const resolvedParams = await params;
-  const propertyId = resolvedParams.id;
-  
-  const supabase = await createClient();
-  
-  // Real Fetch: Fetch Property, Zones, and Tasks
-  // We use mock fallbacks if the user hasn't seeded their database yet
-  const { data: propertyData } = await supabase.from('properties').select('*').eq('id', propertyId).single();
-  const { data: zonesData } = await supabase.from('zones').select('*').eq('property_id', propertyId);
-  const { data: tasksData } = await supabase.from('tasks').select('*').eq('property_id', propertyId).neq('status', 'completed');
-  
-  // Logic to determine if we should show real DB data or visual mock
-  const hasRealData = propertyData && zonesData && zonesData.length > 0;
+  // Demo Mode: Bypassing Supabase fetch to ensure visual prototype is always filled
+  const hasRealData = true;
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       
@@ -94,90 +95,63 @@ export default async function PropertyCommandCenter({
            
            <div className="grid sm:grid-cols-2 gap-4">
               
-              {/* Zone: RED (Immediate) */}
-              <div className="bg-white rounded-2xl border-2 border-red-200 shadow-sm p-5 relative overflow-hidden group hover:border-red-300 transition-colors">
-                 <div className="absolute top-0 right-0 w-2 h-full bg-red-500"></div>
-                 <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-navy line-clamp-1">Main Lobby</h3>
-                      <p className="text-xs text-slate-500">Priority Score: <strong className="text-red-600 text-sm">88/100</strong></p>
-                    </div>
-                    <span className="bg-red-100 text-red-700 text-xs font-bold px-2.5 py-1 rounded">Clean Now</span>
-                 </div>
-                 <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm border-b border-slate-100 pb-2">
-                       <span className="text-slate-500 flex items-center gap-1"><Clock className="w-3.5 h-3.5"/> Last Cleaned:</span>
-                       <span className="font-medium text-navy">12 hrs ago</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                       <span className="text-slate-500 flex items-center gap-1"><Activity className="w-3.5 h-3.5"/> Activity Spike:</span>
-                       <span className="font-medium text-navy text-right">High entry (Raining)</span>
-                    </div>
-                 </div>
-                 <p className="text-sm"><strong>Assigned to:</strong> <span className="text-primary hover:underline cursor-pointer">Carlos M. (Porter)</span></p>
-              </div>
-
-              {/* Zone: ORANGE (Inspect) */}
-              <div className="bg-white rounded-2xl border-2 border-orange-200 shadow-sm p-5 relative overflow-hidden group hover:border-orange-300 transition-colors">
-                 <div className="absolute top-0 right-0 w-2 h-full bg-orange-400"></div>
-                 <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-navy line-clamp-1">2nd Fl Restroom</h3>
-                      <p className="text-xs text-slate-500">Priority Score: <strong className="text-orange-500 text-sm">65/100</strong></p>
-                    </div>
-                    <span className="bg-orange-100 text-orange-700 text-xs font-bold px-2.5 py-1 rounded">Inspect Soon</span>
-                 </div>
-                 <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm border-b border-slate-100 pb-2">
-                       <span className="text-slate-500 flex items-center gap-1"><Clock className="w-3.5 h-3.5"/> Last Cleaned:</span>
-                       <span className="font-medium text-navy">2 hrs ago</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                       <span className="text-slate-500 flex items-center gap-1"><Activity className="w-3.5 h-3.5"/> Activity Spike:</span>
-                       <span className="font-medium text-navy text-right">45 uses detected</span>
-                    </div>
-                 </div>
-                 <p className="text-sm"><strong>Next Action:</strong> System monitor</p>
-              </div>
-
-              {/* Zone: YELLOW (Monitor) */}
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 relative overflow-hidden group hover:border-yellow-300 transition-colors">
-                 <div className="absolute top-0 right-0 w-2 h-full bg-yellow-400"></div>
-                 <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-navy line-clamp-1">Fitness Center</h3>
-                      <p className="text-xs text-slate-500">Priority Score: <strong className="text-yellow-600 text-sm">42/100</strong></p>
-                    </div>
-                    <span className="bg-yellow-100 text-yellow-700 text-xs font-bold px-2.5 py-1 rounded">Monitoring</span>
-                 </div>
-                 <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-sm border-b border-slate-100 pb-2">
-                       <span className="text-slate-500 flex items-center gap-1"><Clock className="w-3.5 h-3.5"/> Last Cleaned:</span>
-                       <span className="font-medium text-navy">4 hrs ago</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                       <span className="text-slate-500 flex items-center gap-1"><Activity className="w-3.5 h-3.5"/> Activity Spike:</span>
-                       <span className="font-medium text-navy text-right">Normal (Morning)</span>
-                    </div>
-                 </div>
-                 <p className="text-sm"><strong>Next Action:</strong> Await 60 threshold</p>
-              </div>
-
-              {/* Zone: GREEN (Skipped/Clean) */}
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 relative overflow-hidden group opacity-80 hover:opacity-100 transition-opacity">
-                 <div className="absolute top-0 right-0 w-2 h-full bg-green-500"></div>
-                 <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="font-bold text-lg text-navy line-clamp-1">Package Rm & Mail</h3>
-                      <p className="text-xs text-slate-500">Priority Score: <strong className="text-green-600 text-sm">12/100</strong></p>
-                    </div>
-                    <span className="bg-green-100 text-green-700 text-xs font-bold px-2.5 py-1 rounded border border-green-200">No Action</span>
-                 </div>
-                 <div className="flex items-center justify-center h-[72px] bg-slate-50 rounded-lg border border-slate-100 mb-4 text-sm text-slate-500 gap-2">
-                    <Ban className="w-4 h-4" /> Routine Clean Skipped (Empty)
-                 </div>
-                 <p className="text-sm"><strong>Result:</strong> Saved 20m of labor</p>
-              </div>
+              {MOCK_ZONES.map(zone => (
+                <div key={zone.id} className={`bg-white rounded-2xl shadow-sm p-5 relative overflow-hidden group transition-all
+                  ${zone.status === 'RED' ? 'border-2 border-red-200 hover:border-red-300' : 
+                    zone.status === 'ORANGE' ? 'border-2 border-orange-200 hover:border-orange-300' : 
+                    zone.status === 'YELLOW' ? 'border border-slate-200 hover:border-yellow-300' : 
+                    'border border-slate-200 opacity-80 hover:opacity-100'}
+                `}>
+                   <div className={`absolute top-0 right-0 w-2 h-full 
+                      ${zone.status === 'RED' ? 'bg-red-500' : 
+                        zone.status === 'ORANGE' ? 'bg-orange-400' : 
+                        zone.status === 'YELLOW' ? 'bg-yellow-400' : 'bg-green-500'}
+                   `}></div>
+                   <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="font-bold text-lg text-navy line-clamp-1">{zone.name}</h3>
+                        <p className="text-xs text-slate-500">Priority Score: <strong className={`text-sm
+                           ${zone.status === 'RED' ? 'text-red-600' : 
+                             zone.status === 'ORANGE' ? 'text-orange-500' : 
+                             zone.status === 'YELLOW' ? 'text-yellow-600' : 'text-green-600'}
+                        `}>{zone.score}/100</strong></p>
+                      </div>
+                      <span className={`text-xs font-bold px-2.5 py-1 rounded border
+                         ${zone.status === 'RED' ? 'bg-red-100 text-red-700 border-transparent' : 
+                           zone.status === 'ORANGE' ? 'bg-orange-100 text-orange-700 border-transparent' : 
+                           zone.status === 'YELLOW' ? 'bg-yellow-100 text-yellow-700 border-transparent' : 
+                           'bg-green-100 text-green-700 border-green-200'}
+                      `}>{zone.label}</span>
+                   </div>
+                   
+                   {zone.skipped ? (
+                     <div className="flex items-center justify-center h-[72px] bg-slate-50 rounded-lg border border-slate-100 mb-4 text-sm text-slate-500 gap-2">
+                        <Ban className="w-4 h-4" /> Routine Clean Skipped (Empty)
+                     </div>
+                   ) : (
+                     <div className="space-y-2 mb-4">
+                        <div className="flex justify-between text-sm border-b border-slate-100 pb-2">
+                           <span className="text-slate-500 flex items-center gap-1"><Clock className="w-3.5 h-3.5"/> Last Cleaned:</span>
+                           <span className="font-medium text-navy">{zone.lastCleaned}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                           <span className="text-slate-500 flex items-center gap-1"><Activity className="w-3.5 h-3.5"/> Activity Spike:</span>
+                           <span className="font-medium text-navy text-right">{zone.activity}</span>
+                        </div>
+                     </div>
+                   )}
+                   
+                   <p className="text-sm">
+                     {zone.skipped ? (
+                        <><strong>Result:</strong> {zone.result}</>
+                     ) : zone.assignedTo ? (
+                        <><strong>Assigned to:</strong> <span className="text-primary hover:underline cursor-pointer">{zone.assignedTo}</span></>
+                     ) : (
+                        <><strong>Next Action:</strong> {zone.action}</>
+                     )}
+                   </p>
+                </div>
+              ))}
 
            </div>
         </div>
@@ -198,34 +172,39 @@ export default async function PropertyCommandCenter({
               </div>
               
               <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                 
-                 {/* Urgent Task */}
-                 <div className="p-3 bg-red-50 border border-red-100 rounded-xl relative">
-                    <div className="absolute top-3 right-3 text-red-500 text-xs font-bold flex items-center gap-1"><Clock className="w-3 h-3"/> Overdue</div>
-                    <h4 className="font-bold text-navy text-sm mb-1 pr-16 leading-tight">Clubhouse Glass Wipe</h4>
-                    <p className="text-xs text-slate-500 mb-2">Assignee: Unassigned</p>
-                    <button className="w-full text-xs font-bold py-1.5 bg-white border border-slate-200 rounded shadow-sm text-navy hover:bg-slate-50">Assign Task</button>
-                 </div>
-
-                 {/* Active Task */}
-                 <div className="p-3 border border-slate-200 rounded-xl bg-white shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
-                    <div className="flex justify-between items-start mb-1">
-                       <h4 className="font-bold text-navy text-sm">Lobby Entry Mats</h4>
-                       <span className="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">In Prog</span>
+                  {MOCK_PROPERTY_TASKS.map(task => (
+                    <div key={task.id}>
+                      {task.priority === 'Overdue' && (
+                        <div className="p-3 bg-red-50 border border-red-100 rounded-xl relative">
+                           <div className="absolute top-3 right-3 text-red-500 text-xs font-bold flex items-center gap-1"><Clock className="w-3 h-3"/> Overdue</div>
+                           <h4 className="font-bold text-navy text-sm mb-1 pr-16 leading-tight">{task.title}</h4>
+                           <p className="text-xs text-slate-500 mb-2">Assignee: {task.assignee}</p>
+                           <button className="w-full text-xs font-bold py-1.5 bg-white border border-slate-200 rounded shadow-sm text-navy hover:bg-slate-50">Assign Task</button>
+                        </div>
+                      )}
+                      
+                      {task.priority === 'Active' && (
+                        <div className="p-3 border border-slate-200 rounded-xl bg-white shadow-sm hover:border-primary/50 transition-colors cursor-pointer">
+                           <div className="flex justify-between items-start mb-1">
+                              <h4 className="font-bold text-navy text-sm">{task.title}</h4>
+                              <span className="bg-primary/10 text-primary text-[10px] font-bold px-1.5 py-0.5 rounded">In Prog</span>
+                           </div>
+                           <p className="text-xs text-slate-500 mb-2">Assignee: {task.assignee}</p>
+                           <div className="w-full bg-slate-100 rounded-full h-1.5"><div className="bg-primary h-1.5 rounded-full w-1/2"></div></div>
+                        </div>
+                      )}
+                      
+                      {task.priority === 'Completed' && (
+                        <div className="p-3 border border-slate-200 rounded-xl bg-slate-50 opacity-75">
+                           <div className="flex justify-between items-start mb-1">
+                              <h4 className="font-bold text-slate-600 text-sm strike-through line-through">{task.title}</h4>
+                              <span className="text-green-600"><CheckCircle2 className="w-4 h-4" /></span>
+                           </div>
+                           <p className="text-xs text-slate-500">Verified at {task.verifiedAt}</p>
+                        </div>
+                      )}
                     </div>
-                    <p className="text-xs text-slate-500 mb-2">Assignee: Carlos M.</p>
-                    <div className="w-full bg-slate-100 rounded-full h-1.5"><div className="bg-primary h-1.5 rounded-full w-1/2"></div></div>
-                 </div>
-
-                 {/* Completed Task */}
-                 <div className="p-3 border border-slate-200 rounded-xl bg-slate-50 opacity-75">
-                    <div className="flex justify-between items-start mb-1">
-                       <h4 className="font-bold text-slate-600 text-sm strike-through line-through">Gym Restrooms (B)</h4>
-                       <span className="text-green-600"><CheckCircle2 className="w-4 h-4" /></span>
-                    </div>
-                    <p className="text-xs text-slate-500">Verified at 9:15 AM</p>
-                 </div>
-                 
+                  ))}
               </div>
               
               <div className="p-3 border-t border-slate-100 text-center shrink-0">
