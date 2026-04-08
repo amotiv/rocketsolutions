@@ -4,9 +4,10 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { 
   Building2, LayoutDashboard, CheckSquare, 
-  BarChart3, Users, Settings, Bell, Search, Menu, Rocket 
+  BarChart3, Users, Settings, Bell, Search, Menu, Rocket, LogOut 
 } from 'lucide-react';
 import { useState } from 'react';
+import { logout } from '@/app/login/actions';
 
 const SIDEBAR_LINKS = [
   { name: 'Properties', href: '/app/properties/1', icon: Building2 },
@@ -72,12 +73,23 @@ export default function AppLayout({
           </div>
 
           <div className="p-4 border-t border-slate-800">
-             <div className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer">
-                <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold text-sm">JS</div>
-                <div className="flex flex-col">
-                   <span className="text-sm font-bold text-white leading-tight">Jane Smith</span>
-                   <span className="text-xs text-slate-400">Regional Manager</span>
+             <div className="flex items-center justify-between px-3 py-3 rounded-lg hover:bg-slate-800 transition-colors group">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold text-sm">JS</div>
+                  <div className="flex flex-col">
+                     <span className="text-sm font-bold text-white leading-tight">Jane Smith</span>
+                     <span className="text-xs text-slate-400">Regional Manager</span>
+                  </div>
                 </div>
+                <form action={logout}>
+                  <button 
+                    type="submit"
+                    className="text-slate-500 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center"
+                    title="Sign Out"
+                  >
+                    <LogOut className="w-5 h-5" />
+                  </button>
+                </form>
              </div>
           </div>
         </div>

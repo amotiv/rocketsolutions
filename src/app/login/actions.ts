@@ -10,30 +10,23 @@ export async function login(formData: FormData) {
   const email = formData.get('email') as string
   const password = formData.get('password') as string
 
-  // Mock checking credentials for local development
-  if (email === 'admin@rocketsolutions.com' && password === 'password123') {
-    revalidatePath('/', 'layout')
-    redirect('/app/properties/1')
-  }
-
-  redirect('/login?message=Invalid credentials (use admin@rocketsolutions.com / password123)')
-}
-
-export async function signup(formData: FormData) {
-  const supabase = await createClient()
-
-  const email = formData.get('email') as string
-  const password = formData.get('password') as string
-
-  const { error, data } = await supabase.auth.signUp({
+  const { error } = await supabase.auth.signInWithPassword({
     email,
     password,
   })
 
   if (error) {
-    redirect('/login?message=Could not authenticate user')
+    redirect('/login?message=Invalid login credentials')
   }
 
   revalidatePath('/', 'layout')
   redirect('/app/properties/1')
+}
+
+export async function logout() {
+  const supabase = await createClient()
+  await supabase.auth.signOut()
+  
+  revalidatePath('/', 'layout')
+  redirect('/login')
 }

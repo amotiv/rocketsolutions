@@ -31,28 +31,25 @@ export async function updateSession(request: NextRequest) {
   // supabase.auth.getUser(). A simple mistake could make it very hard to debug
   // issues with users being randomly logged out.
   
-  let user = null;
-  
-  try {
-    const { data } = await supabase.auth.getUser()
-    user = data.user
-  } catch (err) {
-    console.log('Supabase fetch failed, mocking user for local dev');
-    user = { id: 'mock-user-for-local-testing' } as any;
-  }
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
   if (
     !user &&
     request.nextUrl.pathname.startsWith('/app')
   ) {
-    // Bypassed for local testing without database
-    // const url = request.nextUrl.clone()
-    // url.pathname = '/login'
-    // return NextResponse.redirect(url)
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    return NextResponse.redirect(url)
   }
 
-  // Bypassed redirecting from /login to /app if logged in (since we have no real session)
-  // if (user && request.nextUrl.pathname === '/login') ...
+  // Redirecting from /login to /app if already logged in
+  if (user && request.nextUrl.pathname === '/login') {
+    const url = request.nextUrl.clone()
+    url.pathname = '/app/properties/1'
+    return NextResponse.redirect(url)
+  }
 
   return supabaseResponse
 }
