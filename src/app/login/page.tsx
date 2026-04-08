@@ -41,11 +41,11 @@ export default async function LoginPage({
           <div className="rounded-md shadow-sm space-y-4">
             <div>
               <label htmlFor="email-address" className="sr-only">Email address</label>
-              <input id="email-address" name="email" type="email" autoComplete="email" required className="appearance-none relative block w-full px-4 py-3 border border-slate-300 placeholder-slate-500 text-navy rounded-lg focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" placeholder="Email address" />
+              <input id="email-address" name="email" type="email" autoComplete="email" required defaultValue="admin@rocketsolutions.com" className="appearance-none relative block w-full px-4 py-3 border border-slate-300 placeholder-slate-500 text-navy rounded-lg focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" placeholder="Email address" />
             </div>
             <div>
               <label htmlFor="password" className="sr-only">Password</label>
-              <input id="password" name="password" type="password" autoComplete="current-password" required className="appearance-none relative block w-full px-4 py-3 border border-slate-300 placeholder-slate-500 text-navy rounded-lg focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" placeholder="Password" />
+              <input id="password" name="password" type="password" autoComplete="current-password" required defaultValue="password123" className="appearance-none relative block w-full px-4 py-3 border border-slate-300 placeholder-slate-500 text-navy rounded-lg focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" placeholder="Password" />
             </div>
           </div>
 
